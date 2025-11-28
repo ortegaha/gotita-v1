@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=], initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/stylesSluz.css">
+    <script src="/js/menuh.js"></script>
+</head>
+<body>
+    <h1>AGUA</h1>
+    <button id="menu-toggle" onclick="activarMenu()" class="menu-btn">☰</button>
+    <aside id="side-menu" class="sidebar">
+    <div class="user-icon">
+        <a href=""><img src="/img/user_6327883.png" alt=""></a>
+        </div>
+        <nav class="menu-items">
+            <a href="index.html"><button>incio</button></a>
+            <a href="info_agua.html"><button>informacion agua</button></a>
+            <a href="simuladorluz.html"><button>infomacion electricidad</button></a>
+            <a href=""><button>Button</button></a>
+            <a href="calculadora.html"><button>calculadora</button></a>
+        </nav>
+        <div class="footer-icons">
+            <img src="/img/comment.png" alt="comentarios">
+            <img src="/img/question.png" alt="ayuda">
+        </div>
+    </aside>
+    <main>
+        <section>
+            <div class="container_electrodomestico">
+                <img class="imagenelectrodomestico" src="/img/imgLuz/consola.png" alt="">
+                <p id="contador1" >consumo de energia</p>
+                <button id="btn1" onclick="iniciarConteo1()" >ENCENDER</button>
+            </div>
+            <div class="container_electrodomestico">
+                <img class="imagenelectrodomestico" src="/img/imgLuz/pantalla.png" alt="">
+                <p id="contador2" >consumo de energia</p>
+                <button id="btn2" onclick="iniciarConteo2()">ENCENDER</button>
+            </div>
+            <div class="container_electrodomestico">
+                <img class="imagenelectrodomestico" src="/img/imgLuz/ventilador.png" alt="">
+                <p id="contador3">consumo de energia</p>
+                <button id="btn3" onclick="iniciarConteo3()">ENCENDER</button>
+            </div>
+            <div class="container_electrodomestico">
+                <img class="imagenelectrodomestico" src="/img/imgLuz/minisplit.png" alt="">
+                <p id="contador4">consumo de energia</p>
+                <button id="btn4" onclick="iniciarConteo4()">ENCENDER</button>
+            </div>
+            <div  class="container_electrodomestico">
+                <img class="imagenelectrodomestico" src="/img/imgLuz/lavadora.png" alt="">
+                <p id="contador5">consumo de energia</p>
+                <button id="btn5" onclick="iniciarConteo5()" >ENCENDER</button>
+            </div>
+        </section>
+        <div class="container_total">
+            <p>
+            CONSUMO DE ENERGIA TOTAL: 0 KW/H
+            </p>
+        </div>
+        
+    </main>
+    <footer>
+        <p>@ GOTITA Company </p>
+    </footer>
+</body>
+</html>

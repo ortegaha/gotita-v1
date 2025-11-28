@@ -1,0 +1,192 @@
+/* ---- TU CSS ORIGINAL (NO CAMBIADO) ---- */
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1{
+    font-size: 2.5rem;
+}
+
+.menu-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 230px;
+    height: 70vh;
+    background: white;
+    box-shadow: 3px 0 10px rgba(0,0,0,0.2);
+    padding: 20px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+
+.user-icon img {
+    width: 60px;
+    margin: 0 auto;
+    display: block;
+}
+
+
+.menu-items button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #555;
+    background: #f2f2f2;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.menu-items button:hover {
+    background: #e4e4e4;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+}
+
+.footer-icons img {
+    width: 35px;
+    cursor: pointer;
+}
+
+main {
+    width: 100%;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section {
+    margin-bottom: 40px;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.container_electrodomestico{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 30px;
+    border: 2px solid #000000;
+    border-radius: 20px;
+}
+
+.imagenelectrodomestico {
+    width: 200px;
+    height: 200px;
+}
+
+.container_total{
+    width: 500px;
+}
+
+p{
+    font-size: 1.2rem;
+}
+
+.container_electrodomestico button{
+    padding: 10px 20px;
+    font-size: 1rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+    position: fixed;
+    margin-top: 25px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(169, 170, 170);
+    padding: px;
+}
+
+
+@media (max-width: 900px) {
+    section {
+        width: 90%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .container_electrodomestico {
+        width: 45%;
+    }
+
+    img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .container_total {
+        width: 90%;
+    }
+}
+
+/* Teléfonos */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    section {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .container_electrodomestico {
+        width: 80%;
+    }
+
+    img {
+        width: 130px;
+        height: 130px;
+    }
+
+    .menu-btn {
+        font-size: 1.7rem;
+        top: 10px;
+        left: 10px;
+    }
+
+    .sidebar {
+        width: 200px;
+        height: 100vh;
+    }
+
+    .container_total {
+        width: 90%;
+    }
+}

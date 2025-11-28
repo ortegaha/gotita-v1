@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>CALCULADORA</title>
+<script src="/js/menu.js"></script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+        background: #fafafa;
+        text-align: center;
+    }
+
+.menu-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 230px;
+    height: 70vh;
+    background: white;
+    box-shadow: 3px 0 10px rgba(0,0,0,0.2);
+    padding: 20px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+
+.user-icon img {
+    width: 60px;
+    margin: 0 auto;
+    display: block;
+}
+
+
+.menu-items button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #555;
+    background: #f2f2f2;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.menu-items button:hover {
+    background: #e4e4e4;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+}
+
+.footer-icons img {
+    width: 35px;
+    cursor: pointer;
+}
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 15px;
+        background: rgb(16, 221, 228);
+    }
+    th, td {
+        border: 1px solid #000000;
+        padding: 11px 13px;
+        text-align: center;
+        font-size: 14px;
+    }
+    th {
+        background: #eee;
+    }
+    input {
+        width: 70px;
+        padding: 4px;
+        text-align: right;
+        border: 1px solid #0c0a0ae0;
+        background: rgba(4, 232, 240, 0.774);
+    }
+    .totalCell {
+    background: rgb(16, 221, 228);
+        font-weight: bold;
+    }
+    #btnCalcular {
+        padding: 20px 48px;
+        font-size: 20px;
+        cursor: pointer;
+        background: #b7d606;
+        color: rgb(253, 250, 250);
+        border: none;
+        border-radius: 4px;
+    }
+</style>
+</head>
+
+<body>
+    
+    <h2>CALCULADORA</h2>
+    <button id="menu-toggle" class="menu-btn">☰</button>
+    <aside id="side-menu" class="sidebar">
+    <div class="user-icon">
+        <a href=""><img src="/img/user_6327883.png" alt=""></a>
+        </div>
+        <nav class="menu-items">
+            <a href="index.html"><button>incio</button></a>
+            <a href="info_agua.html"><button>informacion agua</button></a>
+            <a href="info_luz.html"><button>informacion electricidad</button></a>
+            <a href="simuladorluz.html"><button>simulador electricidad</button></a>
+            <a href=""><button>button</button></a>
+        </nav>
+        <div class="footer-icons">
+            <img src="/img/comment.png" alt="comentarios">
+            <img src="/img/question.png" alt="ayuda">
+        </div>
+    </aside>
+
+<table id="tabla">
+    <thead>
+        <tr>
+            <th rowspan="2">No.</th>
+            <th rowspan="2">Inicio</th>
+            <th rowspan="2">Fin</th>
+            <th colspan="2">Eléctrica</th>
+            <th colspan="2">Gasolina o Diésel</th>
+            <th colspan="2">Gas (natural o LP)</th>
+            <th colspan="2">Agua</th>
+            <th rowspan="2">Otros</th>
+            <th rowspan="2">Total</th>
+        </tr>
+        <tr>
+            <th>KWh</th><th>$</th>
+            <th>L</th><th>$</th>
+            <th>L</th><th>$</th>
+            <th>M³</th><th>$</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <!-- Filas generadas manualmente para 6 periodos -->
+        <script>
+            const periodos = [
+                ["Ene", "Feb"],
+                ["Mar", "Abr"],
+                ["May", "Jun"],
+                ["Jul", "Ago"],
+                ["Sept", "Oct"],
+                ["Nov", "Dic"]
+            ];
+
+            for (let i = 0; i < 6; i++) {
+                document.write(`
+                    <tr>
+                        <td>${i+1}</td>
+                        <td>${periodos[i][0]}</td>
+                        <td>${periodos[i][1]}</td>
+
+                        <td><input></td><td><input></td>
+                        <td><input></td><td><input></td>
+                        <td><input></td><td><input></td>
+                        <td><input></td><td><input></td>
+
+                        <td><input></td>
+                        <td class="totalCell" id="total${i}">0</td>
+                    </tr>
+                `);
+            }
+        </script>
+    </tbody>
+
+    <!-- Subtotales -->
+    <tfoot>
+        <tr>
+            <th colspan="3">Subtotal</th>
+
+            <td id="subKWh"></td><td id="sub$Elec"></td>
+            <td id="subLitGas"></td><td id="sub$Gas"></td>
+            <td id="subLitLP"></td><td id="sub$LP"></td>
+            <td id="subM3"></td><td id="sub$Agua"></td>
+
+            <td id="subOtros"></td>
+            <td id="subTotal"></td>
+        </tr>
+    </tfoot>
+
+</table>
+
+<button id="btnCalcular">Calcular</button>
+
+<script>
+document.getElementById("btnCalcular").onclick = function () {
+    const filas = document.querySelectorAll("#tabla tbody tr");
+
+    let subtotal = {
+        kwh: 0, elec$: 0,
+        lgas: 0, gas$: 0,
+        llp: 0, lp$: 0,
+        m3: 0, agua$: 0,
+        otros: 0, total: 0
+    };
+
+    filas.forEach((fila, i) => {
+        const inputs = fila.querySelectorAll("input");
+        let sumaFila = 0;
+
+        const valores = [...inputs].map(inp => Number(inp.value) || 0);
+
+        // Acumular subtotales
+        subtotal.kwh  += valores[0];
+        subtotal.elec$+= valores[1];
+        subtotal.lgas += valores[2];
+        subtotal.gas$ += valores[3];
+        subtotal.llp  += valores[4];
+        subtotal.lp$  += valores[5];
+        subtotal.m3   += valores[6];
+        subtotal.agua$+= valores[7];
+        subtotal.otros+= valores[8];
+
+        // Calcular total por fila
+        valores.forEach(v => sumaFila += v);
+
+        document.getElementById("total" + i).innerText = sumaFila;
+        subtotal.total += sumaFila;
+    });
+
+    // Mostrar subtotales
+    document.getElementById("subKWh").innerText = subtotal.kwh;
+    document.getElementById("sub$Elec").innerText = subtotal.elec$;
+    document.getElementById("subLitGas").innerText = subtotal.lgas;
+    document.getElementById("sub$Gas").innerText = subtotal.gas$;
+    document.getElementById("subLitLP").innerText = subtotal.llp;
+    document.getElementById("sub$LP").innerText = subtotal.lp$;
+    document.getElementById("subM3").innerText = subtotal.m3;
+    document.getElementById("sub$Agua").innerText = subtotal.agua$;
+    document.getElementById("subOtros").innerText = subtotal.otros;
+    document.getElementById("subTotal").innerText = subtotal.total;
+};
+</script>
+
+</body>
+</html>

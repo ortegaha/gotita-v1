@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1{
+    font-size: 2.5rem;
+}
+
+.menu-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 230px;
+    height: 70vh;
+    background: white;
+    box-shadow: 3px 0 10px rgba(0,0,0,0.2);
+    padding: 20px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+
+.user-icon img {
+    width: 60px;
+    margin: 0 auto;
+    display: block;
+}
+
+
+.menu-items button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #555;
+    background: #f2f2f2;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.menu-items button:hover {
+    background: #e4e4e4;
+}
+
+
+.footer-icons {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+}
+
+.footer-icons img {
+    width: 35px;
+    cursor: pointer;
+}
+
+
+main {
+    padding: 20px;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.agua{
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    border-bottom: transparent solid 5px;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.2);
+}
+
+.agua img{
+    width: 200px;
+}
+
+p{
+    text-align: justify;
+    font-size: 1.2rem;
+}
+
+.recomendacion img{
+    width: 150px;
+    margin-right: 2rem;
+}
+
+.container_recomendaciones{
+    width: 85%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    border-bottom: transparent solid 5px;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.2);
+}
+
+.recomendacion{
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+
+}
+
+footer {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: center;
+    background-color: rgb(169, 170, 170);
+}

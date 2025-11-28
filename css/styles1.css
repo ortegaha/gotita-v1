@@ -1,0 +1,252 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.8rem;
+}
+
+img {
+    width: 100px;
+    background: none;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 10px;
+}
+
+nav > a {
+    position: absolute;
+    left: 20px; 
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+    border: 1.5px solid black;
+    padding: 25px 100px;
+    margin: 0 auto;  
+    justify-content: center;
+    border-radius: 10px;
+}
+
+li{
+    border: 2px solid black;
+    padding: 0.6rem;
+    border-radius: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    width: 100%;
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.container_info_principal {
+    width: 300px;
+}
+
+.barra {
+    height: 250px;
+}
+
+.img_gotita {
+    width: 175px;
+    height: 300px;
+}
+
+.container_iconos_footer {
+    width: 95%;
+    display: flex;
+    justify-content: end;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.iconimg {
+    width: 40px;
+}
+
+footer {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: center;
+    background-color: rgb(169, 170, 170);
+}
+
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    margin-top: auto;
+}
+
+/*  RESPONSIVE  */
+
+
+@media (max-width: 900px) {
+    ul {
+        gap: 2rem;
+        padding: 20px 40px;
+    }
+
+    section {
+        gap: 30px;
+    }
+
+    .barra {
+        height: 200px;
+    }
+}
+
+
+@media (max-width: 700px) {
+    nav > a img {
+        width: 80px;
+    }
+
+    ul {
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        padding: 15px 25px;
+    }
+
+    li {
+        padding: 0.5rem;
+    }
+
+    section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .barra {
+        height: 150px;
+    }
+
+    .img_gotita {
+        width: 150px;
+    }
+
+    .container_info_principal {
+        width: 90%;
+    }
+}
+
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    nav > a img {
+        width: 65px;
+    }
+
+    ul {
+        gap: 0.8rem;
+        padding: 12px 15px;
+    }
+
+    .iconimg {
+        width: 40px;
+    }
+
+    .container_iconos_footer {
+        justify-content: center;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .barra {
+        transform: rotate(90deg);
+    }
+}
+
+/* Botón hamburguesa — oculto en desktop */
+.menu-btn {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* MENÚ DESPLEGABLE EN CELULAR */
+@media (max-width: 768px) {
+
+    .menu-btn {
+        display: block;
+        position: absolute;
+        right: 20px;
+        z-index: 20;
+    }
+
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        gap: 1rem;
+        background: white;
+        padding: 20px 0;
+        margin: 0;
+        border-radius: 0;
+        border: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        z-index: 10;
+    }
+
+    nav ul.open {
+        display: flex;
+    }
+
+    nav ul li {
+        width: 100%;
+        border-radius: 0;
+        text-align: center;
+        padding: 1rem 0;
+        border: none;
+        border-bottom: 1px solid #ccc;
+    }
+
+    nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    main {
+        margin-top: 130px;
+    }
+}
